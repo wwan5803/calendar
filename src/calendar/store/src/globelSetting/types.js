@@ -1,0 +1,1 @@
+export const SET_GLOBEL_ITEM = "SET_GLOBEL_ITEM";

@@ -1,0 +1,17 @@
+@mixin make-a-btn($name, $color, $bg-color) {
+  .#{$name}-btn {
+    text-decoration: none;
+    display: inline-block;
+    color: $color;
+    padding: 0.5em 2em;
+    border-radius: 1000px;
+    background-color: $bg-color;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($bg-color, 10%);
+    }
+    &:active {
+      background-color: darken($bg-color, 15%);
+    }
+  }
+}

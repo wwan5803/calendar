@@ -1,0 +1,68 @@
+@import "~config/index";
+
+.full-height,
+.full-height-with-bg {
+  // height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.full-height-with-bg {
+  //background: url("#{$img-url}slider_intro_bg.jpg") center;
+  background-color: $slider_area_color;
+}
+
+.controller {
+  height: 60px;
+  line-height: 60px;
+
+  display: none;
+
+  @include down_to($md) {
+    display: block;
+    //width: 640px;
+  }
+
+  @include down_to($lg) {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 0;
+    width: 1200px;
+  }
+
+  @include down_to($xl) {
+    width: 1600px;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+.area {
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+
+  @include down_to($md) {
+    width: 640px;
+    height: 1600px;
+  }
+
+  @include down_to($lg) {
+    padding-top: 0;
+    width: 1200px;
+    height: 600px;
+  }
+
+  @include down_to($xl) {
+    height: 800px;
+    width: 1600px;
+  }
+}

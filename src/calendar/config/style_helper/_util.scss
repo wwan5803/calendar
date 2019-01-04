@@ -1,0 +1,39 @@
+@mixin down_to($min) {
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin bigger_than($min) {
+  @if $min {
+    @media (min-width: $min + 1) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin up_to($max) {
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin less_than($max) {
+  @if $max {
+    @media (max-width: $max - 1) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

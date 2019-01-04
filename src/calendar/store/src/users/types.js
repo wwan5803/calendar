@@ -1,0 +1,5 @@
+export const FOLLOW_AN_USER = "FOLLOW_AN_USER";
+export const UN_FOLLOW_AN_USER = "UN_FOLLOW_AN_USER";
+export const INSERT_A_FOLLOWED_USER = "INSERT_A_FOLLOWED_USER";
+export const UPDATE_USERS = "UPDATE_USERS";
+export const UPDATE_USER = "UPDATE_USER";

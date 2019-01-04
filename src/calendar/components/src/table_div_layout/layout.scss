@@ -1,0 +1,24 @@
+@import "~config/index";
+
+.table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  //@include less_than($sm) {
+  //  display: block;
+  //}
+}
+
+.content {
+  position: relative;
+  // display: inline-block;
+  @include less_than($sm) {
+    width: 100%;
+  }
+}

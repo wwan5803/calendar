@@ -1,0 +1,2 @@
+export const TOGGLE_FLOAT_APP = "TOGGLE_FLOAT_APP";
+export const CLOSE_FLOAT_APP = "CLOSE_FLOAT_APP";
