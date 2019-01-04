@@ -7,6 +7,7 @@ import langContent from "language";
 import { ScrollBar } from "components";
 import Select from "antd/lib/select";
 import "antd/lib/select/style/css";
+import TitleRow from "./TitleRow";
 import { MOBILE, TABLET, LAPTOP, DESKTOP } from "utils";
 const Option = Select.Option;
 

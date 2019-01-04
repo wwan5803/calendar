@@ -50,8 +50,8 @@ export const FullHeightBlock = connect(state => ({
   }
 );
 
-export function FullHeightBlockWithBackground({ children }) {
-  return <div styleName="full-height-with-bg">{children}</div>;
+export function FullHeightBlockWithBackground({ children, style }) {
+  return <div styleName="full-height-with-bg" style={style}>{children}</div>;
 }
 
 export function TopControllerRow({ children, className }) {

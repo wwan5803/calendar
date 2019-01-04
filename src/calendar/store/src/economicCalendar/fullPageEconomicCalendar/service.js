@@ -3,7 +3,7 @@ import {
   apiPrefix,
   symbolServer,
   bridgeApiPrefix
-} from "config";
+} from "config/config";
 
 export async function fetchFullPageEconomicCalendarData({
   page,

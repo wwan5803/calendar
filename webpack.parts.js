@@ -3,10 +3,8 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
-const { paths } = require("./src/calendar/config");
 const path = require('path');
 const autoprefixer = require("autoprefixer");
-
 
 //css-module should be disable 
 const moduleDisabledPaths = [
@@ -39,7 +37,7 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
                     options: {
                         importLoaders: 1,
                         modules: true,
-                        localIdentName: "[name]_[local]"
+                        localIdentName: "[name]_[local]_[hash:base64:5]"
                     }
                 }, {
                     loader: "postcss-loader",
@@ -66,7 +64,9 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
                     {
                         loader: "css-loader",
                         options: {
-                            importLoaders: 1
+                            importLoaders: 1,
+                            // modules: true,
+                            // localIdentName: "[name]_[local]_[hash:base64:5]"
                         }
                     },
                     {
@@ -211,9 +211,8 @@ exports.loadJavaScript = ({ include, exclude, ant = true }) => ({
                         [
                             "babel-plugin-react-css-modules",
                             {
-                                context: paths.appSrc,
                                 generateScopedName: "[name]_[local]_[hash:base64:5]",
-                                handleMissingStyleName: "warn",
+                                // handleMissingStyleName: "warn",
                                 filetypes: {
                                     ".scss": {
                                         syntax: "postcss-scss"
