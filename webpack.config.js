@@ -137,6 +137,7 @@ const statusConfig = merge([{
 }])
 
 module.exports = env => {
+    console.log('eee', env)
     let mergedConfig = commonConfig;
     if (env.production) {
         mergedConfig = merge(mergedConfig, productionConfig)
