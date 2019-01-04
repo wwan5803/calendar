@@ -84,9 +84,9 @@
 
 .title {
   color: #4a4a4a;
-  margin: 10px 0;
+  margin: 20px 0 10px;
   font-weight: 500;
-
+  padding: 0 20px;
   font-size: 16px;
 
   @include less_than($sm) {
@@ -94,7 +94,7 @@
   }
 
   @include down_to($lg) {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -130,6 +130,7 @@
 .contents {
   position: relative;
   border-radius: 4px;
+  margin-top: 20px;
   // text-align: justify;
   // text-align-last: justify;
 
@@ -164,4 +165,14 @@
   color: #9b9b9b;
   font-size: 12px;
   font-weight: normal;
+}
+
+.label{
+
+}
+
+.value{
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
 }

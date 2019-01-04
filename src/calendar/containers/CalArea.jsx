@@ -244,7 +244,7 @@ class ScrollArea extends React.Component {
                                 const data = dateGroup[0] && dataMap.get(dateGroup[0][0]) ? dataMap.get(dateGroup[0][0]).toJS() : null
                                 return (
                                     <div key={index}>
-                                        <div style={{color: 'white'}}>{getDate(data)}</div>
+                                        <div styleName="gridDate">{getDate(data)}</div>
                                         <Group>
                                             {dateGroup.map((timeGroup, index) =>
                                                 <OneCountry

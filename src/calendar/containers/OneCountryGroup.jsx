@@ -55,6 +55,30 @@ const News = function News({ screenSize, newsData, timezone, language }) {
     const flag = getFlagByCountryCode(CountryCode);
     const ecoPeriodString = generateEcoPeriodString({ language, period: Period });
 
+    const actualValue = generateEcoValueString(
+        {
+            language,
+            scale: Scale,
+            unit: Unit,
+            value: ActualValue
+        }
+    )
+    const expectValue = generateEcoValueString(
+        {
+            language,
+            scale: Scale,
+            unit: Unit,
+            value: ExpectedValue
+        }
+    )
+    const priorValue = generateEcoValueString(
+        {
+            language,
+            scale: Scale,
+            unit: Unit,
+            value: PriorValue
+        }
+    )
     return (
         <div
             styleName={`news ${Importance === "Low"
@@ -86,36 +110,19 @@ const News = function News({ screenSize, newsData, timezone, language }) {
                         ? "im-lo-bt"
                         : Importance === "High" ? "im-hi-bt" : "im-me-bt"}`}>
                         <div styleName="content">
-                            <div>{langContent[language].components.ecoCalendar.Actual}:</div>
-                            <div>
-                                {generateEcoValueString(
-                                    {
-                                        language,
-                                        scale: Scale,
-                                        unit: Unit,
-                                        value: ActualValue
-                                    }
-                                )}
+                            <div styleName="label">{langContent[language].components.ecoCalendar.Actual}:</div>
+                            <div styleName="value" style={{fontSize : actualValue && actualValue.length > 5 ? 12 : 16 }}>
+                                {actualValue}
                             </div>
                         </div>
                         <div styleName="content">
-                            <div>{langContent[language].components.ecoCalendar.Forecast}:</div>
-                            <div>{generateEcoValueString({
-                                language,
-                                scale: Scale,
-                                unit: Unit,
-                                value: ExpectedValue
-                            })}
+                            <div styleName="label">{langContent[language].components.ecoCalendar.Forecast}:</div>
+                            <div styleName="value" style={{fontSize : expectValue && expectValue.length > 5 ? 12 : 16 }}>{expectValue}
                             </div>
                         </div>
                         <div styleName="content">
-                            <div>{langContent[language].components.ecoCalendar.Previous}:</div>
-                            <div>{generateEcoValueString({
-                                language,
-                                scale: Scale,
-                                unit: Unit,
-                                value: PriorValue
-                            })}
+                            <div styleName="label">{langContent[language].components.ecoCalendar.Previous}:</div>
+                            <div styleName="value" style={{fontSize : priorValue && priorValue.length > 5 ? 12 : 16 }}>{priorValue}
                             </div>
                         </div>
                     </div>
