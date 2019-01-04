@@ -7,7 +7,7 @@ import { updateFullPageEconomicCalendarDataImportance } from "store/actions";
 import DropDown from "./FilterDropDown";
 import "./cal.scss";
 
-export default connect(state => ({ language: state.get("language") }))(
+export default connect()(
   class ImportanceFilter extends Component {
     resetImportance = () => {
         const {updateImportanceFilter, dispatch} = this.props

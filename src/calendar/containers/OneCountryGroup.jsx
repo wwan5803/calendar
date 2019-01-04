@@ -9,9 +9,7 @@ import {
     generateEcoValueString
 } from "store/utils";
 
-const News = connect(state => ({
-    language: state.get("language")
-}))(function News({ screenSize, newsData, timezone, language }) {
+const News = function News({ screenSize, newsData, timezone, language }) {
     const {
         EventNameEn,
         EventNameZh,
@@ -125,7 +123,7 @@ const News = connect(state => ({
             </div>
         </div>
     );
-});
+}
 
 export default connect(state => {
     const screenSize = state.get("screenSize");
@@ -134,7 +132,6 @@ export default connect(state => {
     return {
         screenSize,
         timezone,
-        language: state.get("language")
     };
 })(({ language, screenSize, newsList, timezone, dataMap }) => {
     let timeStr = "__:__ AM";
@@ -158,10 +155,6 @@ export default connect(state => {
         console.error(err);
     }
 
-    // const flag = getFlagByCountryCode(
-    //   dataMap.getIn([newsList[0], "CountryCode"])
-    // );
-
     return (
         <div styleName="country">
             <div styleName="info">
@@ -174,6 +167,7 @@ export default connect(state => {
                         screenSize={screenSize}
                         timezone={timezone}
                         newsData={dataMap.get(eventId).toJS()}
+                        language={language}
                     />
                 );
             })}

@@ -12,6 +12,4 @@ const LoadMoreBtn = ({ className, language, onClick }) => {
   );
 };
 
-export default connect(state => ({
-  language: state.get("language")
-}))(LoadMoreBtn);
+export default LoadMoreBtn

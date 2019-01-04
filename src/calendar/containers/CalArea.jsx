@@ -214,7 +214,7 @@ class ScrollArea extends React.Component {
     handleScroll = e => this.scrollTimeLine();
 
     render() {
-        const { isTableView, screenSize, groupedByDayIdArray, groupedIdArray, dataMap, timezone, start, end } = this.props;
+        const { isTableView, screenSize, groupedByDayIdArray, groupedIdArray, dataMap, timezone, language, start, end } = this.props;
         const getDate = (data) => {
             if(data){
                 let dateStr = "__/__/____";
@@ -251,6 +251,7 @@ class ScrollArea extends React.Component {
                                                     key={index}
                                                     newsList={timeGroup}
                                                     dataMap={dataMap}
+                                                    language={language}
                                                 />
                                             )}
                                         </Group>
@@ -287,6 +288,7 @@ class ScrollArea extends React.Component {
                                                 key={eventId}
                                                 eventId={eventId}
                                                 dataMap={dataMap}
+                                                language={language}
                                             />
                                         )}
                                         </tbody>

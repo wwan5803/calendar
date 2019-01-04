@@ -61,5 +61,5 @@ class PeriodDropDown extends Component {
 export default connect(state => {
     const fullPageEconomicCalendar = state.get("fullPageEconomicCalendar");
     const { period: { start, end } } = fullPageEconomicCalendar;
-    return { start, end, language: state.get("language") };
+    return { start, end };
 })(PeriodDropDown);

@@ -17,7 +17,6 @@ import {
   FullHeightBlockWithBackground,
   TopControllerRow
 } from "./src/fullpageLayout";
-import GlobalTip from "./src/globalTip";
 import { recFlag } from "./src/flags";
 import EcoPushContainer from "./src/ecoPushContainer";
 import countries from "./src/countries";

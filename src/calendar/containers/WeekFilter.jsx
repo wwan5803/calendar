@@ -7,7 +7,7 @@ import {
 } from "store/actions";
 import "./cal.scss";
 
-export default connect(state => ({language: state.get("language")}))(
+export default connect()(
     class WeekFilter extends Component {
         constructor(props) {
             super(props)

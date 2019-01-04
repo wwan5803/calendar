@@ -29,65 +29,63 @@ function CountryItem({
   );
 }
 
-export default connect(state => ({ language: state.get("language") }))(
-  class CountryDropDown extends Component {
+export default class CountryDropDown extends Component {
     renderDropDownContent({ countryFilter, updateCountryFilter, language }) {
-      const Inner = ({ closeDropDown }) =>
-        <div styleName="dropdown-content">
-          <ul styleName="dropdown-lists">
-            {[
-              "all",
-              "US",
-              "UK",
-              "CN",
-              "JP",
-              "EMU",
-              "NZ",
-              "CA",
-              "AU"
-            ].map(country =>
-              <CountryItem
-                key={country}
-                closeDropDown={closeDropDown}
-                updateCountryFilter={updateCountryFilter}
-                countryFilter={countryFilter}
-                selfCountryFilter={country}
-                language={language}
-              />
-            )}
-          </ul>
-        </div>;
-      return <Inner />;
+        const Inner = ({ closeDropDown }) =>
+            <div styleName="dropdown-content">
+                <ul styleName="dropdown-lists">
+                    {[
+                        "all",
+                        "US",
+                        "UK",
+                        "CN",
+                        "JP",
+                        "EMU",
+                        "NZ",
+                        "CA",
+                        "AU"
+                    ].map(country =>
+                        <CountryItem
+                            key={country}
+                            closeDropDown={closeDropDown}
+                            updateCountryFilter={updateCountryFilter}
+                            countryFilter={countryFilter}
+                            selfCountryFilter={country}
+                            language={language}
+                        />
+                    )}
+                </ul>
+            </div>;
+        return <Inner />;
     }
 
     render() {
-      const {
-        content: defaultContent,
-        countryFilter,
-        updateCountryFilter,
-        language
-      } = this.props;
-      const content =
-        countryFilter.indexOf("all") !== -1
-          ? defaultContent
-          : countryFilter.length === 1
-            ? langContent[language].components.ecoCalendar.countries[
-                countryFilter[0]
-              ]
-            : langContent[language].components.ecoCalendar.countries.multi;
-
-      //TODO Use Ant Design Select component to replace DropDown
-      //use mode to activate multiple select
-      //option must has a key
-      return (
-        <DropDown content={content}>
-          {this.renderDropDownContent({
+        const {
+            content: defaultContent,
             countryFilter,
             updateCountryFilter,
             language
-          })}
-        </DropDown>
-      );
+        } = this.props;
+        const content =
+            countryFilter.indexOf("all") !== -1
+                ? defaultContent
+                : countryFilter.length === 1
+                ? langContent[language].components.ecoCalendar.countries[
+                    countryFilter[0]
+                    ]
+                : langContent[language].components.ecoCalendar.countries.multi;
+
+        //TODO Use Ant Design Select component to replace DropDown
+        //use mode to activate multiple select
+        //option must has a key
+        return (
+            <DropDown content={content}>
+                {this.renderDropDownContent({
+                    countryFilter,
+                    updateCountryFilter,
+                    language
+                })}
+            </DropDown>
+        );
     }
-  }
-);
+}

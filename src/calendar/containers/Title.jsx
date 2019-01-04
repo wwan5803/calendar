@@ -23,7 +23,7 @@ class Title extends Component {
         return <div styleName="title-row">
             {!isTableView && <a onClick={()=> setIsTableView(true)}><TableViewIcon style={{color: 'rgba(245, 245, 245, 0.5)'}}/></a>}
             {isTableView && <a onClick={()=> setIsTableView(false)}><GridViewIcon /></a>}
-            {isTableView && !hasPeriodFilter() && <WeekFilter start={start}/>}
+            {isTableView && !hasPeriodFilter() && <WeekFilter language={language} start={start}/>}
             {isTableView && hasPeriodFilter() && periodFilter}
             <Popover placement="bottom" content={<Filter {...this.props}/>} trigger="click">
                 {isTableView && <button styleName="filterBtn"><FilterIcon style={{verticalAlign: 'middle', marginRight: 10}} />{langContent[language].components.ecoCalendar.filter}</button>}

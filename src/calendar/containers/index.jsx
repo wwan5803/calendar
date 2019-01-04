@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import {
     FullHeightBlockWithBackground,
     EcoPushContainer
@@ -18,6 +19,7 @@ const default_per_page = 100;
 const default_page = 1;
 let page;
 let perPage;
+
 class Calendar extends Component {
     constructor(props) {
         super(props);
@@ -139,7 +141,7 @@ class Calendar extends Component {
     };
 
     render() {
-        const { screenSize, start, language, fullPageEconomicCalendarPeriodFilter } = this.props;
+        const { screenSize, start, lang, fullPageEconomicCalendarPeriodFilter } = this.props;
         const {isTableView, countryFilter, importanceFilter, timezoneStr} = this.state;
         return (
             <FullHeightBlockWithBackground style={{background: this.state.isTableView ? 'white': ''}}>
@@ -151,12 +153,12 @@ class Calendar extends Component {
                        timezoneStr={timezoneStr}
                        updateTimezoneStr={this.updateTimezoneStr}
                        start={start}
-                       language={language}
+                       language={lang}
                        isTableView={isTableView}
                        setIsTableView={this.setIsTableView}
                        fullPageEconomicCalendarPeriodFilter={fullPageEconomicCalendarPeriodFilter}
                        resetTimeRange={this.resetTimeRange}/>
-                <CalArea isTableView={isTableView} countryFilter={countryFilter} />
+                <CalArea language={lang} isTableView={isTableView} countryFilter={countryFilter} />
             </FullHeightBlockWithBackground>
         );
     }
@@ -176,6 +178,14 @@ export default connect(state => {
         timezoneState,
         economicCalendar,
         fullPageEconomicCalendarPeriodFilter: state.get("fullPageEconomicCalendarPeriodFilter"),
-        language: state.get("language")
     };
 })(Calendar);
+
+Calendar.propTypes = {
+    lang: PropTypes.string
+}
+
+Calendar.defaultProps = {
+    lang: 'en'
+};
+
