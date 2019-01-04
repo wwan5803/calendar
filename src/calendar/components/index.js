@@ -9,7 +9,6 @@ import {
 import { PrimaryBtn, SecondaryBtn, LoadMoreBtn } from "./src/btn";
 import { PageContainer } from "./src/pageContainer";
 import { ScrollBar } from "./src/scrollbar";
-import AuthContainer from "./src/authContainer";
 import SizeContainer from "./src/sizeContainer";
 import { LoadingIcon } from "./src/LoadingIcon";
 import {
@@ -21,10 +20,6 @@ import {
 import GlobalTip from "./src/globalTip";
 import { recFlag } from "./src/flags";
 import EcoPushContainer from "./src/ecoPushContainer";
-import {
-  AnalysisDetailLinkWithoutSearch,
-  AnalysisDetailLinkWithSearch
-} from "./src/AnalysisDetailLink";
 import countries from "./src/countries";
 
 export {
@@ -47,7 +42,5 @@ export {
   TopControllerRow,
   recFlag,
   EcoPushContainer,
-  AnalysisDetailLinkWithoutSearch,
-  AnalysisDetailLinkWithSearch,
   countries,
 };

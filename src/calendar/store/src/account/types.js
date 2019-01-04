@@ -1,2 +1,0 @@
-export const UPDATE_ACCOUNT = "UPDATE_ACCOUNT";
-export const CLEAR_ACCOUNT = "CLEAR_ACCOUNT";

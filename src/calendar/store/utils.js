@@ -10,26 +10,6 @@ import {
   mapToIdArray,
   sortEconomicDataByTime
 } from "./src/economicCalendar/utils";
-import {
-  NOT_IN_SETTING_PHRASE,
-  BASIC_SETTING_PHRASE,
-  FAVOURITES_SETTING_PHRASE
-} from "./src/modalSettings/types";
-import {
-  NOTIFICATION_TYPE_COMMENT_REPLIED,
-  NOTIFICATION_TYPE_FOLLOWED,
-  NOTIFICATION_TYPE_INVITED_COMMENT,
-  NOTIFICATION_TYPE_POST_COMMENTED,
-  NOTIFICATION_TYPE_POST_CREATED,
-  NOTIFICATION_TYPE_POST_FAVOURITE,
-  NOTIFICATION_TYPE_POST_LIKED,
-  NOTIFICATION_TYPE_MENTION,
-  NOTIFICATION_TYPE_POST_PICKED,
-  NOTIFICATION_TYPE_POST_UPDATED,
-  NOTIFICATION_TYPE_STRATEGY_UPDATED,
-  transformNotificationTypeToServiceBlockType,
-  transformSourceType
-} from "./src/notifications/notificationTypesHelper";
 import { generateCombinedActions } from "./src/combinedHelper";
 
 function filterPersistedField(state) {
@@ -80,22 +60,6 @@ export {
   groupEconomicDataListByCountry,
   groupEconomicDataListByTime,
   filterEconomicCalendarByTime,
-  NOT_IN_SETTING_PHRASE,
-  BASIC_SETTING_PHRASE,
-  FAVOURITES_SETTING_PHRASE,
-  NOTIFICATION_TYPE_COMMENT_REPLIED,
-  NOTIFICATION_TYPE_FOLLOWED,
-  NOTIFICATION_TYPE_INVITED_COMMENT,
-  NOTIFICATION_TYPE_POST_COMMENTED,
-  NOTIFICATION_TYPE_POST_CREATED,
-  NOTIFICATION_TYPE_POST_FAVOURITE,
-  NOTIFICATION_TYPE_POST_LIKED,
-  NOTIFICATION_TYPE_MENTION,
-  NOTIFICATION_TYPE_POST_PICKED,
-  NOTIFICATION_TYPE_POST_UPDATED,
-  NOTIFICATION_TYPE_STRATEGY_UPDATED,
-  transformNotificationTypeToServiceBlockType,
-  transformSourceType,
   generateEcoPeriodString,
   generateEcoValueString,
   generateCombinedActions,

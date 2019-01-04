@@ -1,2 +1,0 @@
-export const UPDATE_DRAFT_LIST = "UPDATE_DRAFT_LIST";
-export const DELETE_A_DRAFT = "DELETE_A_DRAFT";
