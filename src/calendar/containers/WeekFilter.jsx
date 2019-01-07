@@ -69,9 +69,9 @@ export default connect()(
                                 styleName={`weekday ${momentDay.valueOf() === selectDate.valueOf() ? 'active' : ''}`}
                                 onClick={() => this.onWeekDay(momentDay)}>
 
-                        <div>{momentDay.get('date')}</div>
+                        <div styleName="weekDate">{momentDay.get('date')}</div>
 
-                        <div>{langContent[language].components.ecoCalendar.weekday[momentDay.weekday()]}</div>
+                        <div styleName="weekDate">{langContent[language].components.ecoCalendar.weekday[momentDay.weekday()]}</div>
 
                     </div>
                 })}

@@ -235,11 +235,16 @@
   }
 }
 
+.weekDate{
+  font-size: 16px;
+}
+
 .filterBtn{
   padding: 0 15px;
   line-height: 32px;
   height: 32px;
   border-radius: 4px;
+  border: 1px solid #9b9b9b;
   color: #9b9b9b;
   background-color: #ffffff;
   cursor: pointer;

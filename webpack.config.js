@@ -20,7 +20,7 @@ const productionConfig = merge([
         entry: {
             app: PATHS.app,
         },
-        mode: 'production',
+        mode: 'development',
         resolve: {
             modules: [
                 PATHS.app,
@@ -34,7 +34,7 @@ const productionConfig = merge([
         },
         plugins: [
             new webpack.DefinePlugin({
-                'process.env.NODE_ENV': JSON.stringify('production'),
+                'process.env.NODE_ENV': JSON.stringify('development'),
                 // 'process.env.ACY': true
             }),
         ],
