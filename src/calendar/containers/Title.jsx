@@ -25,7 +25,7 @@ class Title extends Component {
             {isTableView && <a onClick={()=> setIsTableView(false)}><GridViewIcon /></a>}
             {isTableView && !hasPeriodFilter() && <WeekFilter language={language} start={start}/>}
             {isTableView && hasPeriodFilter() && periodFilter}
-            <Popover placement="bottom" content={<Filter {...this.props}/>} trigger="click">
+            <Popover placement="bottomLeft" content={<Filter {...this.props}/>} trigger="click">
                 {isTableView && <button styleName="filterBtn"><FilterIcon style={{verticalAlign: 'middle', marginRight: 10}} />{langContent[language].components.ecoCalendar.filter}</button>}
                 {!isTableView && <button styleName="filterBtnGrid"><FilterIcon style={{verticalAlign: 'middle'}} /></button>}
             </Popover>

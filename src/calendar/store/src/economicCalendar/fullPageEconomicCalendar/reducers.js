@@ -1,5 +1,5 @@
 import { UPDATE_FULL_PAGE_ECONOMIC_CALENDAR_DATA, SET_PERIOD_FILTER } from "./types";
-import { oneWeekInMS, oneDayInMS, oneHourInMS } from "utils";
+import { oneWeekInMS, oneDayInMS, oneHourInMS, defaultOffset } from "utils";
 
 function updatePeriodFilter({domain, payload}) {
   const { start, end } = payload;
@@ -51,7 +51,7 @@ export function fullPageEconomicCalendar(
 
   domain = {
 
-      timezone: 0,
+      timezone: defaultOffset,
       period: {
           ...(() => {
               // const today = new Date(new Date().setHours(0,0,0,0)).getTime();

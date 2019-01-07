@@ -36,6 +36,8 @@ export function getFlagByCountryCode(countryCode) {
       return cn_flag;
     case "US":
       return us_flag;
+    case "CH":
+      return sw_flag;
     default:
       return;
   }

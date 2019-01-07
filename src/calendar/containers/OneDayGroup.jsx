@@ -34,10 +34,11 @@ const News = function News({ screenSize, newsData, timezone, language }) {
         const hours = +str.substr(0, 2);
         const mins = str.substr(3, 2);
         if (hours >= 12) {
-            timeStr = (hours > 12 ? hours - 12 : hours) + ":" + mins;
+            const hour = hours > 12 ? hours - 12 : hours;
+            timeStr = (String(hour).length > 1 ? hour : `0${hour}`) + ":" + mins;
             timeStr = language === "zh" ? "下午 " + timeStr : timeStr + " PM";
         } else {
-            timeStr = hours + ":" + mins;
+            timeStr = (String(hours).length > 1 ? hours : `0${hours}`) + ":" + mins;
             timeStr = language === "zh" ? "上午 " + timeStr : timeStr + " AM";
         }
     } catch (err) {}

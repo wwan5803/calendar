@@ -6,7 +6,6 @@ import OneDay from "./OneDayGroup";
 import { MOBILE, TABLET, DESKTOP, LAPTOP, oneDayInMS } from "utils";
 import { Container, ScrollBar } from "components";
 import moment from "moment";
-import { Scrollbars } from "react-custom-scrollbars";
 import {
     groupEconomicDataListByDay,
     groupEconomicDataListByCountry,
@@ -227,7 +226,7 @@ class ScrollArea extends React.Component {
                 //     dateStr = `${d}/${m}/${y}`;
                 // } catch (err) {}
                 // return dateStr
-                return moment(data.startTimeInUTCMS + timezone * 3600 * 1000).locale(locale).format("ll")
+                return moment.utc(data.startTimeInUTCMS + timezone * 3600 * 1000).locale(locale).format("ll")
             }
             return null
         }
