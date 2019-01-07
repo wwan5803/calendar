@@ -58,7 +58,7 @@ const News = function News({ screenSize, newsData, timezone, language }) {
                 )}
             </td>
             <td>
-                <div styleName="title">
+                <div styleName="titleTableView">
                     {language === "zh" && ecoPeriodString}
                     {language === "en" && EventNameEn}
                     {language === "zh" && EventNameZh}

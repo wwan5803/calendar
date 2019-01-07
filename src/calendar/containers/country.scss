@@ -82,11 +82,10 @@
   float: right;
 }
 
-.title {
+.title, .titleTableView {
   color: #4a4a4a;
   margin: 20px 0 10px;
   font-weight: 500;
-  padding: 0 20px;
   font-size: 16px;
 
   @include less_than($sm) {
@@ -97,6 +96,12 @@
     font-size: 14px;
   }
 }
+
+.title{
+  padding: 0 20px;
+}
+
+
 
 .content-flag {
   width: 30px;

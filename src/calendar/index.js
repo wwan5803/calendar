@@ -12,7 +12,7 @@ export class ComprehensiveCalendar {
             <Calendar {...props}/>
         </Provider>, mountPoint)
     }
-    destory() {
+    destroy() {
         ReactDOM.unmountComponentAtNode(this.mountPoint)
     }
 }

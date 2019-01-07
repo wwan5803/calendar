@@ -12,7 +12,7 @@ class AcyRestore extends Component {
         })
     }
     componentWillUnmount() {
-        this.ComprehensiveCalendar.destory()
+        this.ComprehensiveCalendar.destroy()
     }
 }
 
