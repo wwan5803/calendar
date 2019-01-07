@@ -28,9 +28,9 @@ const productionConfig = merge([
             extensions: ['.js', '.jsx', '.scss', '.css']
         },
         output: {
-            chunkFilename: '[name].[chunkhash:8].js',
-            filename: '[name].[chunkhash:8].js',
-            library: 'Acy'
+            chunkFilename: 'calendar.[chunkhash:8].js',
+            filename: 'calendar.[chunkhash:8].js',
+            library: 'Static'
         },
         plugins: [
             new webpack.DefinePlugin({

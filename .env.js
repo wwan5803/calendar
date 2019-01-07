@@ -1,7 +1,7 @@
 module.exports = {
-    env: "test",
-    hostname: "//www.finlogixtest.com",
-    apiHostname: "//api.finlogixtest.com",
+    env: "production",
+    hostname: "https://www.finlogix.com",
+    apiHostname: "https://api.finlogix.com",
     apiVersion: "v1",
     symbolServer: "https://bridge.finlogix.com",
     bridgeHost: "https://apibridge.finlogix.com",

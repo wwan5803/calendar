@@ -217,16 +217,17 @@ class ScrollArea extends React.Component {
         const { isTableView, screenSize, groupedByDayIdArray, groupedIdArray, dataMap, timezone, language, start, end } = this.props;
         const getDate = (data) => {
             if(data){
-                let dateStr = "__/__/____";
-                const date = new Date(data.startTimeInUTCMS + timezone * 3600 * 1000);
-                try {
-                    const y = date.getUTCFullYear();
-                    const m = date.getUTCMonth() + 1;
-                    const d = date.getUTCDate();
-                    dateStr = `${d}/${m}/${y}`;
-                } catch (err) {}
+                // let dateStr = "__/__/____";
+                const locale = language === 'zh' ? 'zh_cn' : 'en';
+                // const date = new Date(data.startTimeInUTCMS + timezone * 3600 * 1000);
+                // try {
+                //     const y = date.getUTCFullYear();
+                //     const m = date.getUTCMonth() + 1;
+                //     const d = date.getUTCDate();
+                //     dateStr = `${d}/${m}/${y}`;
+                // } catch (err) {}
                 // return dateStr
-                return moment(data.startTimeInUTCMS + timezone * 3600 * 1000).format("ll")
+                return moment(data.startTimeInUTCMS + timezone * 3600 * 1000).locale(locale).format("ll")
             }
             return null
         }
@@ -326,7 +327,6 @@ export default connect((state, { countryFilter }) => {
         countryFilter,
         importance
     );
-    console.log('filteredMapfilteredMap',filteredMap)
 
     const sortedMap = sortEconomicDataByTime({ map: filteredMap });
     const sortedIdArray = mapToIdArray({ map: sortedMap });
@@ -336,7 +336,7 @@ export default connect((state, { countryFilter }) => {
         timezone,
         idArray: sortedIdArray
     });
-    console.log('groupedByDayIdArray',groupedByDayIdArray)
+
     const groupedIdArray = groupedByDayIdArray.map(idArray =>
         groupEconomicDataListByTime({ map: sortedMap, idArray })
 
