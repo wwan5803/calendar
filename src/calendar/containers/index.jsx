@@ -90,9 +90,7 @@ class Calendar extends Component {
     resetTimeRange = () => {
         const { dispatch } = this.props;
         // const today = new Date().setHours(0,0,0,0);
-        const weekStart =
-            parseInt(new Date().getTime() / oneWeekInMS, 10) * oneWeekInMS -
-            4 * oneDayInMS;
+        const weekStart = new Date().getTime();
         dispatch(
             acquireFullPageEconomicCalendarData({
                 start: weekStart,

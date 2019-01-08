@@ -55,18 +55,18 @@ export function fullPageEconomicCalendar(
       period: {
           ...(() => {
               // const today = new Date(new Date().setHours(0,0,0,0)).getTime();
+              //
               // return {
-              //     start: today - oneWeekInMS,
+              //     start: today,
               //     end: today + 2 * oneWeekInMS
               // };
-              const weekStart =
-                  parseInt(new Date().getTime() / oneWeekInMS, 10) * oneWeekInMS -
-                  4 * oneDayInMS;
 
+              const weekStart = new Date().getTime();
               return {
                   start: weekStart,
                   end: weekStart + oneWeekInMS
               };
+
               // const weekStart =
               //     parseInt(new Date().getTime() / oneWeekInMS, 10) * oneWeekInMS -
               //     4 * oneDayInMS;
