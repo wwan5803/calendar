@@ -104,7 +104,8 @@ export default connect(state => ({
                         placeholder={<SelectPlaceholder language={language}/>}
                         style={{
                             width: 140,
-                            verticalAlign: "middle"
+                            verticalAlign: "middle",
+
                         }}
                         onSelect={value => {
                             const entity = timezoneState.get(value);

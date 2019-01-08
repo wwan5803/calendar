@@ -22,15 +22,14 @@ export const Group = ({ children }) =>
 
 export function FullPageContentsContainer({
                                               _onMouseMove,
-                                              handleScroll,
                                               screenSize,
                                               children,
-                                              inputRef
+                                              inputRef,
+                                              acyCalendar
                                           }) {
-    return (
+    return !acyCalendar ? (
         <div styleName="wrapper">
             <ScrollBar
-                handleScroll={handleScroll}
                 _onMouseMove={_onMouseMove}
                 inputRef={inputRef}
                 style={{ height: "100%" }}
@@ -40,7 +39,7 @@ export function FullPageContentsContainer({
                 </Container>
             </ScrollBar>
         </div>
-    );
+    ) : <div>{children}</div>;
 }
 
 export function Contents({ children }) {
@@ -106,114 +105,24 @@ let clientY;
 class ScrollArea extends React.Component {
     constructor(props) {
         super(props);
-        this._onMouseMove = this._onMouseMove.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
         this._mount = !!1;
-        const { browserEnvironment } = this.props;
-        if (!browserEnvironment.get("touchable")) this.registerHandler();
-        this.scrollArea.scrollLeft(2800);
+        // const { browserEnvironment } = this.props;
+        // if (!browserEnvironment.get("touchable")) this.registerHandler();
+        // this.scrollArea.scrollLeft(2800);
     }
 
     componentWillUnmount() {
         this._mount = !!0;
-        this.unRegisterHandler();
     }
 
-    registerHandler = () => {
-        this.mousedownHandler = this.scrollArea.view.addEventListener(
-            "mousedown",
-            e => {
-                let isDescendant = !!0;
-                let node = e.target;
-                while (node !== null && node !== document.body && !isDescendant) {
-                    if (node === this.scrollArea.view) {
-                        isDescendant = !!1;
-                    }
-                    node = node.parentNode;
-                }
-                if (isDescendant) {
-                    e.preventDefault();
-                    isMouseDown = !!1;
-                }
-            }
-        );
-        this.mouseupHandler = this.scrollArea.view.addEventListener(
-            "mouseup",
-            e => {
-                isMouseDown = !!0;
-            }
-        );
-
-        this.mouseleaveHandler = this.scrollArea.view.addEventListener(
-            "mouseleave",
-            e => {
-                isMouseDown = !!0;
-            }
-        );
-
-        this.blurHandler = this.scrollArea.view.addEventListener("blur", e => {
-            isMouseDown = !!0;
-        });
-    };
-
-    unRegisterHandler = () => {
-        this.mousedownHandler &&
-        this.scrollArea.view.removeEventListener(
-            "mousedown",
-            this.mousedownHandler
-        );
-        this.mouseupHandler &&
-        this.scrollArea.view.removeEventListener("mouseup", this.mouseupHandler);
-        this.mouseleaveHandler &&
-        this.scrollArea.view.removeEventListener(
-            "mouseleave",
-            this.mouseleaveHandler
-        );
-        this.blurHandler &&
-        this.scrollArea.view.removeEventListener("blur", this.blurHandler);
-    };
-
-    scrollTimeLine = () => {
-        this.timeline && this.timeline.scrollLeft(this.scrollArea.getScrollLeft());
-    };
-
-
-
-    _onMouseMove(e) {
-        if (isMouseDown) {
-            const scrollbars = this.scrollArea;
-            clientX = e.clientX;
-            clientY = e.clientY;
-            i++;
-            if (i === 1) {
-                scrollXStart = scrollbars.view.scrollLeft;
-                scrollYStart = scrollbars.view.scrollTop;
-                xStart = clientX;
-                yStart = clientY;
-            }
-
-            if (this.hasMouseMoveDelayHandler) return;
-            this.hasMouseMoveDelayHandler = !!1;
-            setTimeout(() => {
-                if (this._mount) {
-                    scrollbars.scrollTop(scrollYStart + yStart - clientY);
-                    scrollbars.scrollLeft(scrollXStart + xStart - clientX);
-                    this.scrollTimeLine();
-                    this.hasMouseMoveDelayHandler = !!0;
-                }
-            }, 30);
-        } else {
-            i = 0;
-        }
+    _onMouseMove = (e) => {
     }
-
-    handleScroll = e => this.scrollTimeLine();
 
     render() {
-        const { isTableView, screenSize, groupedByDayIdArray, groupedIdArray, dataMap, timezone, language, start, end } = this.props;
+        const { acyCalendar, isTableView, screenSize, groupedByDayIdArray, groupedIdArray, dataMap, timezone, language, start, end } = this.props;
         const getDate = (data) => {
             if(data){
                 // let dateStr = "__/__/____";
@@ -226,17 +135,16 @@ class ScrollArea extends React.Component {
                 //     dateStr = `${d}/${m}/${y}`;
                 // } catch (err) {}
                 // return dateStr
-                return moment.utc(data.startTimeInUTCMS + timezone * 3600 * 1000).locale(locale).format("ll")
+                return moment(data.startTimeInUTCMS + timezone * 3600 * 1000).locale(locale).format("ll")
             }
             return null
         }
         return (
-            <div>
                 <FullPageContentsContainer
                     _onMouseMove={this._onMouseMove}
-                    handleScroll={this.handleScroll}
                     inputRef={el => (this.scrollArea = el)}
                     screenSize={screenSize}
+                    acyCalendar={acyCalendar}
                 >
                     {!isTableView && <Contents>
                         {(() => {
@@ -301,10 +209,7 @@ class ScrollArea extends React.Component {
                         </table>
                     </div>
                     }
-
-
                 </FullPageContentsContainer>
-            </div>
         );
     }
 }

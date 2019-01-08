@@ -8,7 +8,7 @@ class AcyRestore extends Component {
     }
     componentDidMount() {
         this.ComprehensiveCalendar = new Acy.ComprehensiveCalendar({
-            mountPoint: this.node, lang: 'zh', id: '1', width: 1160
+            mountPoint: this.node, lang: 'en', width: 1160, acyCalendar: true
         })
     }
     componentWillUnmount() {

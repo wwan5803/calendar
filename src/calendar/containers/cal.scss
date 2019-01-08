@@ -207,6 +207,11 @@
   height: 75px;
 }
 
+.acy-title-row{
+  margin-bottom: 50px;
+  width: 100%;
+}
+
 .weekFilter{
   display: flex;
 }
@@ -214,6 +219,8 @@
 .lastNextWeek{
   padding: 15px;
   border: 1px solid #f8f8f8;
+  background: white;
+  font-weight: normal;
   color: #9b9b9b;
   cursor: pointer;
 }
@@ -246,8 +253,17 @@
   border-radius: 4px;
   border: 1px solid #9b9b9b;
   color: #9b9b9b;
+  font-weight: normal;
   background-color: #ffffff;
   cursor: pointer;
+  &:hover{
+    background: #013b81;
+    color: white;
+  }
+  &:focus{
+    background: #013b81;
+    color: white;
+  }
 }
 
 .filterBtnGrid{
@@ -277,14 +293,25 @@
   cursor: pointer;
 }
 :global {
-  // .ant-select > .ant-select-selection {
-  //   background: transparent;
-  //   border: 1px solid #fff;
-  //   color: #fff;
-  //   & > .ant-select-arrow {
-  //     color: #fff;
-  //   }
-  // }
+  .ant-radio-group > .ant-row > .ant-col-3 > .ant-radio-button-wrapper{
+    font-size: 14px;
+    font-weight: normal;
+  }
+   .ant-select > .ant-select-selection > .ant-select-selection__rendered > .ant-select-selection-selected-value {
+     font-size: 14px;
+   }
+
+  .ant-calendar-date{
+    font-size: 12px;
+  }
+
+  .ant-select-dropdown-menu-item{
+    font-size: 14px;
+  }
+
+  .ant-checkbox + span {
+    font-weight: normal;
+  }
 
   // .ant-select-dropdown-menu > .ant-select-dropdown-menu-item {
   //   &:hover {

@@ -20,7 +20,7 @@ export const FullHeightBlock = connect(state => ({
           })
         );
       }
-    }w
+    }
 
     componentWillUnmount() {
       window.removeEventListener("resize", this.resizeHandler);

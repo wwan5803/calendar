@@ -25,7 +25,7 @@ class Calendar extends Component {
         super(props);
         this.state = {
             countryFilter:[], timezoneStr: "", importanceFilter: undefined, fetching: false,
-            isTableView: props.isTableView || false
+            isTableView: props.acyCalendar || false
         };
     }
 
@@ -141,10 +141,10 @@ class Calendar extends Component {
     };
 
     render() {
-        const { screenSize, start, lang, fullPageEconomicCalendarPeriodFilter } = this.props;
+        const { screenSize, start, lang, fullPageEconomicCalendarPeriodFilter, acyCalendar } = this.props;
         const {isTableView, countryFilter, importanceFilter, timezoneStr} = this.state;
         return (
-            <FullHeightBlockWithBackground style={{background: this.state.isTableView ? 'white': ''}}>
+            <FullHeightBlockWithBackground style={{position: acyCalendar ? "relative" : "fixed", background: this.state.isTableView ? 'white': ''}}>
                 <EcoPushContainer />
                 <Title countryFilter={countryFilter}
                        updateCountryFilter={this.updateCountryFilter}
@@ -155,10 +155,11 @@ class Calendar extends Component {
                        start={start}
                        language={lang}
                        isTableView={isTableView}
+                       acyCalendar={acyCalendar}
                        setIsTableView={this.setIsTableView}
                        fullPageEconomicCalendarPeriodFilter={fullPageEconomicCalendarPeriodFilter}
                        resetTimeRange={this.resetTimeRange}/>
-                <CalArea language={lang} isTableView={isTableView} countryFilter={countryFilter} />
+                <CalArea acyCalendar={acyCalendar} language={lang} isTableView={isTableView} countryFilter={countryFilter} />
             </FullHeightBlockWithBackground>
         );
     }

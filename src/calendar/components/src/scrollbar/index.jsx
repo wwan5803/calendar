@@ -45,7 +45,8 @@ export class ScrollBar extends React.Component {
       style = {},
       horStyle = {},
       verStyle = {},
-      inputRef
+      inputRef,
+      handleScroll
     } = this.props;
 
     return (
@@ -53,7 +54,7 @@ export class ScrollBar extends React.Component {
         universal
         ref={inputRef}
         onMouseMove={this.props._onMouseMove}
-        onScroll={this.props.handleScroll}
+        onScroll={handleScroll && handleScroll}
         autoHide
         autoHideTimeout={1000}
         autoHideDuration={200}

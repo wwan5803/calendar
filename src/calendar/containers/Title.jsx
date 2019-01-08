@@ -12,7 +12,7 @@ import { MOBILE, TABLET, LAPTOP } from "utils";
 
 class Title extends Component {
     render() {
-        const {start, language, isTableView, setIsTableView, fullPageEconomicCalendarPeriodFilter, resetTimeRange} = this.props;
+        const {start, language, acyCalendar, isTableView, setIsTableView, fullPageEconomicCalendarPeriodFilter, resetTimeRange} = this.props;
         const {start: filterPeriodStart, end: filterPeriodEnd} = fullPageEconomicCalendarPeriodFilter;
         console.log(filterPeriodStart, filterPeriodEnd)
         const hasPeriodFilter = () => {
@@ -20,9 +20,9 @@ class Title extends Component {
         }
         const locale = language === 'zh' ? 'zh_cn' : 'en';
         const periodFilter = hasPeriodFilter() ? <div><div styleName="periodFilter">{`${filterPeriodStart.locale(locale).format("LLLL")} ~ ${filterPeriodEnd.locale(locale).format("LLLL")}`}</div><div styleName="remove" onClick={resetTimeRange}>X</div></div> : null
-        return <div styleName="title-row">
+        return <div styleName={`title-row ${acyCalendar ? 'acy-title-row' : ''}`}>
             {!isTableView && <a onClick={()=> setIsTableView(true)}><TableViewIcon style={{color: 'rgba(245, 245, 245, 0.5)'}}/></a>}
-            {isTableView && <a onClick={()=> setIsTableView(false)}><GridViewIcon /></a>}
+            {isTableView && !acyCalendar && <a onClick={()=> setIsTableView(false)}><GridViewIcon /></a>}
             {isTableView && !hasPeriodFilter() && <WeekFilter language={language} start={start}/>}
             {isTableView && hasPeriodFilter() && periodFilter}
             <Popover placement="bottomLeft" content={<Filter {...this.props}/>} trigger="click">
