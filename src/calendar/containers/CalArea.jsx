@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./area.scss";
 import OneCountry from "./OneCountryGroup";
 import OneDay from "./OneDayGroup";
-import { MOBILE, TABLET, DESKTOP, LAPTOP, oneDayInMS } from "utils";
+import {MOBILE, TABLET, DESKTOP, LAPTOP, oneDayInMS, defaultOffset} from "utils";
 import { Container, ScrollBar } from "components";
 import moment from "moment";
 import {
@@ -14,6 +14,7 @@ import {
     mapToIdArray,
     sortEconomicDataByTime
 } from "store/utils";
+import langContent from "language";
 
 export const Group = ({ children }) =>
     <div styleName="one-day-group">
@@ -82,25 +83,24 @@ function filterAdapter(country) {
 
 function filter(map, countryFilter, importance) {
     let newMap = map;
-    if(importance) newMap = map.filter(entity => importance === entity.get("Importance").toLowerCase())
+    if(importance) newMap = map.filter(entity => {
+        let isFound = false
+        importance.forEach(key => {
+            if(key === entity.get("Importance").toLowerCase()){
+                isFound = true
+            }
+        })
+        return isFound
+    })
     const currencyArray = countryFilter.map(country => filterAdapter(country));
-    if (currencyArray.length === 0) {
-        return newMap;
-    }
+    // if (currencyArray.length === 0) {
+    //     return newMap;
+    // }
 
     return newMap.filter(
         entity => currencyArray.indexOf(entity.get("Country")) !== -1
     );
 }
-
-let xStart;
-let yStart;
-let scrollXStart;
-let scrollYStart;
-let i = 0;
-let isMouseDown = !!0;
-let clientX;
-let clientY;
 
 class ScrollArea extends React.Component {
     constructor(props) {
@@ -135,7 +135,7 @@ class ScrollArea extends React.Component {
                 //     dateStr = `${d}/${m}/${y}`;
                 // } catch (err) {}
                 // return dateStr
-                return moment(data.startTimeInUTCMS + timezone * 3600 * 1000).locale(locale).format("ll")
+                return moment(data.startTimeInUTCMS - defaultOffset * 3600 *1000 + timezone * 3600 * 1000).locale(locale).format("ll")
             }
             return null
         }
@@ -173,13 +173,13 @@ class ScrollArea extends React.Component {
                         <table styleName="table">
                             <thead>
                             <tr>
-                                <th>时间</th>
-                                <th>产品</th>
-                                <th>事件</th>
-                                <th>重要性</th>
-                                <th>结果</th>
-                                <th>市场预测</th>
-                                <th>前值</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.time}</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.product}</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.event}</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.importance}</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.result}</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.expect}</th>
+                                <th>{langContent[language].components.ecoCalendar.tableHeader.prior}</th>
                             </tr>
                             </thead>
                             {

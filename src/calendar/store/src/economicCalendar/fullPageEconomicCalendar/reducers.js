@@ -54,25 +54,32 @@ export function fullPageEconomicCalendar(
       timezone: defaultOffset,
       period: {
           ...(() => {
-              // const today = new Date(new Date().setHours(0,0,0,0)).getTime();
-              //
+              // const weekStart =
+              //     parseInt(new Date().getTime() / oneWeekInMS, 10) * oneWeekInMS + 5 * oneDayInMS;
               // return {
-              //     start: today,
-              //     end: today + 2 * oneWeekInMS
+              //     start: weekStart,
+              //     end: weekStart + 2 * oneWeekInMS
               // };
 
-              const weekStart = new Date().getTime();
+              const today = new Date(new Date().setHours(0,0,0,0)).getTime() + defaultOffset * 3600 *1000;
+
               return {
-                  start: weekStart,
-                  end: weekStart + oneWeekInMS
+                  start: today,
+                  end: today + 2 * oneWeekInMS
               };
+
+              // const weekStart = new Date().getTime();
+              // return {
+              //     start: weekStart,
+              //     end: weekStart + oneWeekInMS
+              // };
 
               // const weekStart =
               //     parseInt(new Date().getTime() / oneWeekInMS, 10) * oneWeekInMS -
               //     4 * oneDayInMS;
-
+              //
               // return {
-              //     start: weekStart - oneWeekInMS,
+              //     start: weekStart,
               //     end: weekStart + 2 * oneWeekInMS
               // };
           })()

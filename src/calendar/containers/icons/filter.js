@@ -2,7 +2,7 @@ import React, { Component } from "react";
 function FilterIcon({style, styleName, width='20px', height='18px'}){
     return(
         <svg width={width} height={height} style={style} viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-            <title>noun_filters_1245150</title>
+            <title>Filter</title>
             <desc>Created with Sketch.</desc>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Finlogix-Calendar_2_TableView" transform="translate(-1250.000000, -253.000000)" fill="#C3C3C3" fillRule="nonzero">

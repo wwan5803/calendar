@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Tooltip } from 'antd';
 import { MOBILE, TABLET } from "utils";
 import langContent from "language";
 import "./country.scss";
@@ -88,9 +89,7 @@ const News = function News({ screenSize, newsData, timezone, language }) {
         >
             <div styleName="padding-around">
                 {flag && (
-                    <div styleName="content-flag">
-                        <img width="100%" src={flag} alt="fr flag" />
-                    </div>
+                    <img styleName="content-flag" width="100%" src={flag} alt="fr flag" />
                 )}
                 <div styleName="date">
                     {dateStr} &nbsp; {timeStr}
@@ -99,11 +98,12 @@ const News = function News({ screenSize, newsData, timezone, language }) {
 
             <div styleName="news-prop">
                 <div styleName="title">
-                    {language === "zh" && ecoPeriodString}
-                    {language === "en" && EventNameEn}
-                    {language === "zh" && EventNameZh}
-                    &nbsp;
-                    {language === "en" && ecoPeriodString}
+                    {language === "zh" && <Tooltip placement="top" title={`${ecoPeriodString}${EventNameZh}`}>
+                        {`${ecoPeriodString}${EventNameZh}`}
+                    </Tooltip>}
+                    {language === "en" && <Tooltip placement="top" title={`${EventNameEn} ${ecoPeriodString}`}>
+                        {`${EventNameEn} ${ecoPeriodString}`}
+                    </Tooltip>}
                 </div>
 
                 {EventType === "EconomicEvents" && (

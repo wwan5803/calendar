@@ -32,7 +32,6 @@ export default {
     CH: "Switzerland"
   },
   resetSelection: "Reset selection",
-  importance: "Importance",
   high: "High",
   low: "Low",
   medium: "Medium",
@@ -86,9 +85,9 @@ export default {
     importance: "Importance"
   },
   importance: {
-    low: "L",
-    medium: "M",
-    high: "H"
+    low: "Low",
+    medium: "Medium",
+    high: "High"
   },
   weekday: {
     0: "Sunday",
@@ -100,5 +99,15 @@ export default {
     6: "Saturday"
   },
   lastWeek: "Last",
-  nextWeek: "Next" 
+  nextWeek: "Next",
+  tableHeader: {
+      time: 'Time',
+      product: 'Product',
+      event: 'Event',
+      importance: 'Importance',
+      result: 'Actual',
+      expect: 'Forecast',
+      prior: 'Previous'
+
+  }
 };

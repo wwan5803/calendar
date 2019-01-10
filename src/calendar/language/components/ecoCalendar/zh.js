@@ -32,7 +32,6 @@ export default {
     CH: "瑞士"
   },
   resetSelection: "清除选择",
-  importance: "重要性",
   high: "高",
   low: "低",
   medium: "中",
@@ -100,5 +99,15 @@ export default {
     6: "星期六"
   },
   lastWeek: "上周",
-  nextWeek: "下周" 
+  nextWeek: "下周",
+  tableHeader: {
+    time: '时间',
+    product: '产品',
+    event: '事件',
+    importance: '重要性',
+    result: '结果',
+    expect: '市场预测',
+    prior: '前值'
+
+  }
 };

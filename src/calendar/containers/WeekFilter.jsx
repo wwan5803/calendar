@@ -42,8 +42,8 @@ export default connect()(
             }
         }
         getDayInWeek = () => {
-            const startOfWeek = this.state.currentWeek.clone().startOf('isoweek');
-            const endOfWeek = this.state.currentWeek.clone().endOf('isoweek');
+            const startOfWeek = this.state.currentWeek.clone().startOf('week');
+            const endOfWeek = this.state.currentWeek.clone().endOf('week');
             const days = [];
             let day = startOfWeek;
 

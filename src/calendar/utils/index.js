@@ -22,6 +22,7 @@ export polyfill from "./src/polyfill";
 export const oneDayInMS = 24 * 3600 * 1000;
 export const oneWeekInMS = 7 * 24 * 3600 * 1000;
 export const defaultOffset = -(new Date().getTimezoneOffset() / 60);
+export const defaultTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 export {
   Hammer,
   calcSize,

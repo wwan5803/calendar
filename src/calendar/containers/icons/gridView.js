@@ -2,7 +2,7 @@ import React, { Component } from "react";
 function GridViewIcon({style, styleName, width='23px', height='20px'}){
     return(
         <svg width={width} height={height} style={style} className={styleName} viewBox="0 0 23 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-            <title>Group 7</title>
+            <title>Grid view</title>
             <desc>Created with Sketch.</desc>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" opacity="0.3">
                 <g id="Finlogix-Calendar_2_TableView" transform="translate(-207.000000, -146.000000)" fill="#393939" fillRule="nonzero">

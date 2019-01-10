@@ -8,7 +8,7 @@ import {ScrollBar} from "components";
 import Select from "antd/lib/select";
 import "antd/lib/select/style/css";
 import TitleRow from "./TitleRow";
-import {defaultOffset, MOBILE, TABLET, LAPTOP, DESKTOP} from "utils";
+import {defaultOffset, defaultTimezone, MOBILE, TABLET, LAPTOP, DESKTOP} from "utils";
 
 const Option = Select.Option;
 
@@ -44,7 +44,6 @@ const zoneNameList = [
     "Australia/Brisbane",
     "Australia/Adelaide",
     "Australia/Sydney",
-
     "Asia/Magadan",
     "Asia/Anadyr",
     "Pacific/Auckland",
@@ -73,8 +72,8 @@ export default connect(state => ({
 
         resetTimeZone = () => {
             const {dispatch, updateTimezoneStr} = this.props
-            updateTimezoneStr("")
-            dispatch(updateFullPageEconomicCalendarDataTimezone(0));
+            updateTimezoneStr(defaultTimezone)
+            dispatch(updateFullPageEconomicCalendarDataTimezone(defaultOffset));
         }
 
         render() {
@@ -90,7 +89,6 @@ export default connect(state => ({
                 dispatch
             } = this.props;
             // const default_gmt_offset = defaultEntity.get("gmt_offset");
-            const defaultOffsetStr = `GMT${defaultOffset}:00`;
             const offsetStr = `GMT${activeTimezone}:00`;
             return (
                 <div>
@@ -103,7 +101,7 @@ export default connect(state => ({
                         }}
                         placeholder={<SelectPlaceholder language={language}/>}
                         style={{
-                            width: 140,
+                            width: 180,
                             verticalAlign: "middle",
 
                         }}
@@ -115,12 +113,10 @@ export default connect(state => ({
                             dispatch(updateFullPageEconomicCalendarDataTimezone(offset));
                             updateTimezoneStr(value);
                         }}
-                        // defaultValue={timezoneStr === ""
-                        //     ? content
-                        //     : langContent[language].components.ecoCalendar.timezone[timezoneStr] +
-                        //     " " +
-                        //     defaultOffsetStr}
-                        defaultValue={`${defaultOffsetStr}`}
+                        value={langContent[language].components.ecoCalendar.timezone[timezoneStr] +
+                        " " +
+                        offsetStr}
+                        // defaultValue={`${defaultOffsetStr}`}
                         dropdownMatchSelectWidth={false}
                     >
                         {zoneNameList.map(zoneName => {

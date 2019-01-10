@@ -6,7 +6,7 @@ import {
     EcoPushContainer
 } from "components";
 import "./cal.scss";
-import { MOBILE, TABLET, LAPTOP, urlToObject, oneWeekInMS, oneDayInMS, oneHourInMS } from "utils";
+import {MOBILE, TABLET, LAPTOP, urlToObject, oneWeekInMS, oneDayInMS, oneHourInMS, defaultOffset, defaultTimezone} from "utils";
 import Title from "./Title";
 import CalArea from "./CalArea";
 import {
@@ -24,7 +24,21 @@ class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            countryFilter:[], timezoneStr: "", importanceFilter: undefined, fetching: false,
+            countryFilter:[
+                "US",
+                "UK",
+                "CN",
+                "JP",
+                "EMU",
+                "NZ",
+                "CA",
+                "AU",
+                "CH"
+            ], timezoneStr: defaultTimezone, importanceFilter: [
+                "low",
+                "medium",
+                "high",
+            ], fetching: false,
             isTableView: props.acyCalendar || false
         };
     }
@@ -42,9 +56,7 @@ class Calendar extends Component {
     }
 
     updateTimezoneStr = timezoneStr => {
-        if (timezoneStr !== this.state.timezoneStr) {
-            this.setState({ timezoneStr });
-        }
+        this.setState({ timezoneStr });
     };
 
     componentDidMount() {
@@ -90,11 +102,11 @@ class Calendar extends Component {
     resetTimeRange = () => {
         const { dispatch } = this.props;
         // const today = new Date().setHours(0,0,0,0);
-        const weekStart = new Date().getTime();
+        const today = new Date(new Date().setHours(0,0,0,0)).getTime() + defaultOffset * 3600 *1000;
         dispatch(
             acquireFullPageEconomicCalendarData({
-                start: weekStart,
-                end: weekStart + oneWeekInMS
+                start: today,
+                end: today + 2 * oneWeekInMS
             })
         );
         dispatch(

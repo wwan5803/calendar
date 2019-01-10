@@ -53,9 +53,8 @@ const News = function News({ screenSize, newsData, timezone, language }) {
             </td>
             <td>
                 {flag && (
-                    <div styleName="content-flag">
-                        <img width="100%" src={flag} alt="fr flag" />
-                    </div>
+                    <img styleName="content-flag" width="100%" src={flag} alt="fr flag" />
+
                 )}
             </td>
             <td>
